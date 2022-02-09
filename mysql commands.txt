@@ -1,0 +1,272 @@
+order by 'group by
+multiple insert into table
+
+What is MySQL ORDER BY?
+The ORDER BY keyword is used to sort the result-set in ascending or descending order. The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
+
+select <COLUMN> from <TABLE> order by <COLUMN_NAME> asc;		//sort the op in asc order (top to bottom)
+select CUST_ID from customers order by name asc; 
+select name from customers order by name asc;
+
+select <COLUMN_>  from <TABLE> order by <COLUMN_NAME>  desc;   	// sort the op in desc order (bottom to top)
+select name from customers order by name desc;
+
+=============================================================== 
+What is MYSQL GROUP BY?
+The MYSQL GROUP BY Clause is used to collect data from multiple records and group the result by one or more column.
+
+select <COLUMM> from <TABLE> group by <COLUMN>;		 // will shows unique entries of selected column
+select gender from test group by gender;
+
+SELECT <COLUMN_1>,<COLUMN_2> FROM <TABLE> ;		//Grouping using multiple columns
+SELECT 'category_id','year_released' FROM 'movies' ;
+===============================================================
+
+
+create database <database name>
+create database sample  	// to create a database
+----------------------
+use <database>
+use sample;			//to use the database
+----------------------
+create table <table_name> (NAME VARCHAR(20),CONTACT_NUM DECIMAL);   
+create table customers (NAME VARCHAR(20),CONTACT_NUM DECIMAL);        //to create the table and define the 	column content and it's data type  
+----------------------
+select * from <table name>
+select * from customers;		//show the table content
+----------------------
+insert into <table name> (name,contact_num)  values ('madhavi',8425002619),('vijay',9870383227);		
+insert into customers(name,contact_num)  values ('madhavi',8425002619),('vijay',9870383227);		//insert values into table
+
+insert into test values ('madhavi','female') ,('vijay','male'),('ajay','male'),('swati','female'),('nisha','female');
+----------------------
+update customers set CONTACT_NUM=8735268076 where CONTACT_NUM=9870383227; 
+update customers set CONTACT_NUM=9870383227 where NAME='vijay';		//update the values in existing table
+----------------------
+delete from customers where NAME='vijay';  		// to delete the entry	
+----------------------
+insert into customers values ('vijay',307,9870383227); 		//insert the values in existing table
+----------------------
+alter table customers add column CUST_ID VARCHAR(15) after name;		//add column in existing table
+----------------------
+insert into customers(name,CUST_ID,contact_num) values ('madhavi',105,8425002619),('ajay',206,9853782075),('vijay',403,9870383227);		//add multiple entries in table(multiple rows)
+----------------------
+alter table customers add primary key(CUST_ID);			//to set a primary key 
+----------------------
+
+
+
+----------------------------------------------------------------------------------
+MYSQL joins
+
+CROSS JOIN
+select * from <1st_table_name> cross join <2nd_table_name>;      //cross join
+select * from customers cross join sample;     // cross join
+
+NATURAL JOIN
+A NATURAL JOIN can be an INNER join, a LEFT OUTER join, or a RIGHT OUTER join. The default is INNER join.
+select * from <Table1> natural join <Table2>;
+select * from customers natural join sample;
+
+INNER JOIN/ EQUI join
+select * from <Table1> inner join <Table2> on <Table1.Matching_Col_Name> = <Table2.Matching_Col_Name>
+select * from customers inner join sample on customers.CUST_ID = sample.CUST_ID;
+										OR
+select * from <Tabel1> inner join <Tabel2> where <Table1.Matching_Col_Name> = <Table2.Matching_Col_Name>
+select * from customers inner join sample where customers.CUST_ID = sample.CUST_ID;
+
+LEFT OUTER JOIN
+select * from <Table1> left outer join <Table2> on <table1.Matching column> = <table2.matching column>
+select * from customers left outer join sample on customers.CUST_ID =sample.CUST_ID;
+
+RIGHT OUTER JOIN
+select * from <Table1> right outer join <Table2> on <table1.Matching column> = <table2.matching column>
+select * from customers right outer join sample on customers.CUST_ID =sample.CUST_ID;
+
+------------------------------------
+MYSQL FUNCTIONS
+
+SQL functions are divided into 2 categories:
+1. Aggregate Functions
+2. Scalar Functions
+
+
+1.Aggregate Functions - These functions return a single value after performing calculations on a group of values
+
+1) AVG() Function- Average returns average value after calculating it from values in a numeric column.
+
+select avg(COLUMNNAME_avg value which is to be calculated) from <table_name>;		//gives avg value
+select avg(prod_quantity) from sample;
+----------------------
+2) COUNT() Function- Count returns the number of rows present in the table either based on some condition or without condition.
+
+select count(COLUMN_NAME) from <TABLE_NAME> where CUST_ID =105;		//gives the count 
+select count(name) from customers where CUST_ID =105;
+----------------------
+3)  FIRST() Function- First function returns first value of a selected column
+
+select first(COLUMN_NAME) from <TABLE_NAME>; 		//gives first value of column
+select first(name) from customers;
+-----------------------
+4) LAST() Function- LAST function returns the return last value of the selected column.
+
+select last(COLUMN_NAME) from <TABLE_NAME>; 		//gives last value of column
+select last(name) from customers;
+-----------------------
+5)MAX() Function- MAX function returns maximum value from selected column of the table.
+
+select max(COLUMN_NAME) from <TABLE_NAME>; 		//gives max value of selected column
+select max(name) from customers;
+-----------------------
+6)MIN() Function- MIN function returns minimum value from a selected column of the table.
+
+select min(COLUMN_NAME) from <TABLE_NAME>; 		//gives last value  selected column
+select min(name) from customers;
+-----------------------
+7) SUM() Function - SUM function returns total sum of a selected columns numeric values.
+
+select sum(COULMN_NAME)) from <TABLE_NAME>;		// gives the sum values of selected column
+select sum(PROD_QUANTITY) from sample;
+
+-------------------------------------------------
+	2. Scalar Functions - Scalar functions return a Group of value from an input value
+
+1)UCASE() Function
+UCASE function is used to convert value of string column to Uppercase characters.
+
+select UCASE(COLUMN NAME) from <TABLE_NAME>;
+select UCASE(name) from customers;
+-----------------------
+2) LCASE() Function
+LCASE function is used to convert value of string columns to Lowecase characters.
+
+select lcase(COLUMN_NAME) from <TABLE_NAME>;
+select lcase(name) from customers;
+-----------------------
+3) MID() Function
+MID function is used to extract substrings from column values of string type in a table.
+
+select MID(COLUMN_NAME,lettr num string from ,no. of lettrs which is to be printed) from <TABLE_NAME>;
+select MID(name,2,3) from customers;
+eg .for MADHAVI - adh
+
+eg.select MID(name,5,2) from customers;
+MADHAVI -av
+-----------------------
+
+4)ROUND() Function
+ROUND function is used to round a numeric field to number of nearest integer. It is used on Decimal point values.
+
+Consider the following Emp table
+
+eid	name	age	salary
+401	anu	22	9000.67
+402	shane	29	8000.98
+403	rohan	34	6000.45
+404	scott	44	10000
+405	Tiger	35	8000.01
+SQL query is,
+
+SELECT ROUND(COLUMN_NAME) from <TABLE_NAME>; 		//gives round figure value
+SELECT ROUND(salary) from emp; 		//gives round figure value
+
+ROUND(salary)
+9001
+8001
+6000
+10000
+8000
+==================================================================
+
+
+how to insert multiple rows in table 
+insert into project(name, start_date,end_date) values ('abc','12-11-2020','12-12-2020'),('pqr','01-01-2021','02-02-2021');
+
+
+Create Table - By Copying all columns from another table
+CREATE TABLE new_table
+  AS (SELECT * FROM old_table);
+
+How can I create a SQL table from another table without copying any values from the old table?
+CREATE TABLE foo LIKE bar;
+==================================================================
+
+
+select distinct <column_name> from <table_name>;		// find the unique values
+select distinct name from customers;
+---------------------------
+select MID(COLUMN_NAMe,1,3) from <TABLE_NAME>;			// to print the first 3 letters od mentioned column 
+select MID(name,1,3) from customers;
+---------------------------
+select rtrim(COLUMN_NAME) from <TABLE_NAME>;		//  to print theNAME from customers table after removing 												white spaces from the right side.
+select rtrim(name) from customers;
+---------------------------
+select distinct length(COLUMN_NAME) from <TABLE_NAME>;		// show the length count of sleclted column
+select distinct length(name) from customers;
+---------------------------
+select replace(COLUMN_NAME,'a','A') from <TABLE_NAME>;		// replace the letter a with A
+select replace(name,'a','A') from customers;
+---------------------------
+select CONCAT(COLUMN_1,' ',COLUMN_2) as NAME from <TABLE_NAME>;		//print the two columns into single column 																  and space char should separte them.
+select CONCAT(name,' ',last_name) as NAME from customers;
+---------------------------
+select * from <table> order by <column> desc;		// will show the result in descending flow
+select * from customers order by name desc;
+---------------------------
+select * from <TABLE_NAME> where <column_name> like '207%';		//will find the mentioned entry
+select * from customers where CUST_ID like '207%';
+---------------------------
+select * from customers where name like '%y';		// will find the entry whose name(column name) is ends with y
+select * from customers where name like '%y';
+---------------------------
+select * from customers where CUST_ID between 200 and 209; 		// show the count between mentioned entry
+select * from customers where CUST_ID between 200 and 209;
+---------------------------
+select * from customers where MOD(CUST_ID,2) = 0;		// to find even rows on sequential data
+select * from customers where MOD(CUST_ID,2) <> 0; 		// to find odd rows in sequential manner
+---------------------------
+create table customersclone like customers;			// to clone a new table from another table
+select * from customerclone;
+---------------------------
+select curdate(); 		// to show date
+select now();
+select getdate(); 
+---------------------------
+select * from customers order by name desc limit 3;		//sorting the column(name) and gives the result in desc order (limit 3)
+select * from customers order by name limit 3;    //bydefault considering asc oder i.e. top 3 results
+---------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
