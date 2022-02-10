@@ -1,0 +1,108 @@
+types of backup
+Types of Backup
+There are different kinds of backups, the following lists some of them:
+Full Backup-Full backup means backing up everything.
+
+Incremental Backup-Incremental backup means backing up everything that has changed since last full backup.
+
+Differential Backup-Differential seems to be another name for incremental.
+
+Network Backup-Network backup usually means backing up a client to a backup se
+
+
+
+
+
+
+rver, this means the client sends the files to the server and the server writes them to backup medium.
+
+Dump Backu-Dump backups are not ordinary file by file backups. The whole disk partition or file system is "dumped" to the backup medium as is. This means it is also necessary to restore the whole partition or file system at one go. The dump backup may be a disk image, which means it must be restored to a similar disk with same disk geometry and bad blocks in same places. Watch out for this.
+
+Level 0 -- 9 Backup
+Level 0 to 9 backups are a finer grained version of incremental backups. Level N backup means backing up everything that has changed since a same or lower lever backup.
+----------------------------------------------------------------
+runlevels significance
+0 – System halt i.e the system can be safely powered off with no activity.
+1 – Single user mode.
+2 – Multiple user mode with no NFS(network file system).
+3 – Multiple user mode under the command line interface and not under the graphical user interface.
+4 – User-definable.
+5 – Multiple user mode under GUI (graphical user interface) and this is the standard runlevel for most of the LINUX based systems.
+6 – Reboot which is used to restart the system
+----------------------------------------------------------------- 
+differnce between SCP and rsync
+SCP is based on ssh & is used to transfer files from localhost to remote host securely.Secure copy SCP copies only the files or directories that you select.
+Rsync is basically used to synchronize files/directories either on localhost or on the remote host. Rsync initially copies the whole directory & then copies the newly added files (differential backup) rather than copying the whole directory again.It is secure & faster than SCP & can also be used in place of the SCP command to copy files/directories to the remote hosts.
+------------------------------------------------------------------
+uname -r      // to check  kernel version
+------------------------------------------------------------------
+cat /etc/redhat/release       //redhat version
+------------------------------------------------------------------
+who command      // to check num of logged in users on a machine
+------------------------------------------------------------------
+what is patching and why it is requird
+Patching is the process of applying codes to software that either fixes its bugs or upgrades it.
+patches are part of essential preventative maintenance necessary to keep machines up-to-date, stable, and safe from malware and other threats.
+------------------------------------------------------------------
+How do you differentiate between a server hang and server crash issue? 
+ When a server crashes, the JAVA process no longer exists. When the server is hung, it stops responding.
+------------------------------------------------------------------
+logical volume
+logical volume management (LVM) is a form of storage virtualization that offers a more flexible approach to managing disk storage space than traditional partitioning .
+
+It allows you to aggregate all the partitions of different physical devices into a single logical volume group from where they can be managed centrally.
+This volume group is a combination of used and unused disk space. From this volume group, you can extract multiple logical volumes depending upon your requirements. Moreover, the exact space allocated to each logical volume can also be increased or decreased depending upon your needs. Then you can have separate file systems for each of these logical volumes. In this way, you can manage the overall storage space more efficiently and can assign the unused space to all those users that ask for it without any problem.
+------------------------------------------------------------------
+kernell tunniung - to change the running kernel parameter is called kernel tunninig .
+------------------------------------------------------------------
+differnece between unix and linux 
+
+linux																		unix 
+
+linux is open source and freely available for users where unix source code is not available freely.
+
+------------------------------------------------------------------ 
+linux IPC -  
+IPC is a interprocess communication used to communicate between multiple processes.
+
+cooperation processes requires an interprocess comunication (IPC) mechanism that will allow them to exchange data and information.
+
+
+various IPC mechanism 
+1.pipe
+2.named pipe(FIFO)
+3.Message Queue
+4.Shared Memory
+
+PIPE :pipe is unidirection pipe stream.It has two ends means that two processes are connected to each other.
+
+why pipe have limited capacity?
+pipe is simple a buffer maintained in kernel memory. This buffer has a maximum capacity.Once a pipe is full,further writes to the pipe block until the reader removes some data from the pipe.
+
+
+
+
+        write end ------>  [unidirectional byte stream (PIPE) ] -------- > read end 
+
+------------------------------------------------------------------
+NAMED PIPE :
+pipe is only for related process,for unrelated process used Named pipe(FIFO).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
